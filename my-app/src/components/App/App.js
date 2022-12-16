@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import Message from '../Message/Message';
 import ReposResults from '../ReposResults/ReposResults';
@@ -8,16 +9,30 @@ import data from '../../data/repos';
 import './styles.scss';
 
 function App() {
-  const [result, setResult] = useState(data);
+  const [result, setResult] = useState(null);
+
+  const search = async (searchValue) => {
+    try {
+      const response = await axios.get('https://api.github.com/search/repositories', {
+        params: {
+          q: searchValue, // ici on insert la query /repositories?q=searchValue'
+        },
+      });
+      setResult(response.data);
+    }
+    catch (err) {
+      setResult(null);
+    }
+  };
 
   return (
     <div className="app">
       <header className="logo">
         <img src={logo} alt="github" className="logo-img" />
       </header>
-      <SearchBar />
-      <Message total={result.total_count} />
-      <ReposResults reposList={result.items} />
+      <SearchBar onSearch={search} />
+      <Message total={result?.total_count} />
+      <ReposResults reposList={result?.items} />
     </div>
   );
 }
