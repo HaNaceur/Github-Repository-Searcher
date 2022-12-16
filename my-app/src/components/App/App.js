@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Message from '../Message/Message';
 import ReposResults from '../ReposResults/ReposResults';
@@ -8,14 +8,16 @@ import data from '../../data/repos';
 import './styles.scss';
 
 function App() {
+  const [result, setResult] = useState(data);
+
   return (
     <div className="app">
       <header className="logo">
         <img src={logo} alt="github" className="logo-img" />
       </header>
       <SearchBar />
-      <Message total={data.total_count} />
-      <ReposResults reposList={data.items} />
+      <Message total={result.total_count} />
+      <ReposResults reposList={result.items} />
     </div>
   );
 }
