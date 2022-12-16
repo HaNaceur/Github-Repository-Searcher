@@ -4,12 +4,18 @@ import { Form, Input, Segment } from 'semantic-ui-react';
 
 import './styles.scss';
 import useInitialFocus from '../../hooks/useInitialFocus';
+import useInput from '../../hooks/useInput';
 
 function SearchBar({ onSearch }) {
-  const [searchValue, setSearchValue] = useState('');
-  
+  // on remplace le state de l'input controllé par notre customhooks useInput
+  // il nous donne un tableau, que l'on recupère en destructuré
+  // le 1er element est un objet 
+  const [bindSearchInput, searchValue, setSearchValue] = useInput();
+  // const [searchValue, setSearchValue] = useState('');
+
+  // on utilise notre customHooks pour faire la logique de focus sur le mount
+  // il remplace le useRef et useEffect
   const inputRef = useInitialFocus();
-  //
   // const inputRef = useRef();
   // useEffect(() => {
   //   if (inputRef?.current) {
@@ -28,6 +34,7 @@ function SearchBar({ onSearch }) {
     // et on lui passe la valeur de la recherche
     onSearch(searchValue.trim());
   };
+
   return (
     <Segment>
       <Form onSubmit={handleSubmit}>
@@ -37,8 +44,9 @@ function SearchBar({ onSearch }) {
             placeholder="Recherche..."
             icon="search"
             iconPosition="left"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            {...bindSearchInput}
+            // value={searchValue}
+            // onChange={(e) => setSearchValue(e.target.value)}
           />
         </Form.Field>
       </Form>
