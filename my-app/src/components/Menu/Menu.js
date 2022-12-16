@@ -9,14 +9,12 @@ function Menu() {
       <MenuS.Item
         as={NavLink}
         to="/"
-        exact
       >
         Recherche
       </MenuS.Item>
       <MenuS.Item
         as={NavLink}
         to="/faq"
-        exact
       >
         FAQ
       </MenuS.Item>
