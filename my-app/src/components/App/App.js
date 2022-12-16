@@ -5,10 +5,11 @@ import { Routes, Route } from 'react-router-dom';
 import Message from '../Message/Message';
 import ReposResults from '../ReposResults/ReposResults';
 import SearchBar from '../SearchBar/SearchBar';
-import logo from '../../assets/images/logo-github.png';
-import './styles.scss';
 import Menu from '../Menu/Menu';
 import Faq from '../FAQ/Faq';
+import Page404 from '../404/404';
+import logo from '../../assets/images/logo-github.png';
+import './styles.scss';
 
 function App() {
   const [result, setResult] = useState(null);
@@ -45,6 +46,7 @@ function App() {
         )}
         />
         <Route path="/faq" element={<Faq />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );
