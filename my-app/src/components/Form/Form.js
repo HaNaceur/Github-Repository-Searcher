@@ -23,19 +23,22 @@ import './styles.scss';
       
       
         return (
-          <form onSubmit={handleOnSubmit} className="form">
+            <form>
+          <input onSubmit={handleOnSubmit} className="form">
             <ReactQuill
               className="form__input"
-              theme="bubble"
+              placeholder="Search repository..."
               value={inputValue}
               onChange={setInputValue}
       
             />
+            </input>
             <button
               type="submit"
             >
               Ajouter
             </button>
+          
           </form>
         );
       }

@@ -5,31 +5,27 @@ import DOMpurify from 'dompurify';
 
 import './styles.scss';
 
-function Post({
+function Repos({
   id,
   title,
   category,
   excerpt,
 }) {
   return (
-    <article className="post">
-      <Link to={`/post/${id}`}>
-        <h2 className="post-title">{title}</h2>
-        <div className="post-category">{category}</div>
+    <article className="repo">
         <p
-          className="post-excerpt"
+          htmlFor={id}
           dangerouslySetInnerHTML={{ __html: DOMpurify.sanitize(excerpt) }}
         />
-      </Link>
     </article>
   );
 }
 
-Post.propTypes = {
+Repos.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   excerpt: PropTypes.string.isRequired,
 };
 
-export default React.memo(Post);
+export default React.memo(Repos);
