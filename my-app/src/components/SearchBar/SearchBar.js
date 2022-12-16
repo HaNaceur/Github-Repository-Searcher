@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Segment } from 'semantic-ui-react';
 
 import './styles.scss';
+import useInitialFocus from '../../hooks/useInitialFocus';
 
 function SearchBar({ onSearch }) {
   const [searchValue, setSearchValue] = useState('');
+  
+  const inputRef = useInitialFocus();
+  //
+  // const inputRef = useRef();
+  // useEffect(() => {
+  //   if (inputRef?.current) {
+  //     inputRef.current.focus();
+  //   }
+  // }, []);
 
   const handleSubmit = () => {
     // pas besoin de preventDefault avec le Form de semanticUi, car il gère déjà le preventdefault
@@ -23,6 +33,7 @@ function SearchBar({ onSearch }) {
       <Form onSubmit={handleSubmit}>
         <Form.Field>
           <Input
+            ref={inputRef}
             placeholder="Recherche..."
             icon="search"
             iconPosition="left"
