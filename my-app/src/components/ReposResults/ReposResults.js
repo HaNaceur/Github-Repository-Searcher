@@ -1,31 +1,101 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import DOMpurify from 'dompurify';
+import { Card, Image } from 'semantic-ui-react';
 
 import './styles.scss';
 
-function Repos({
-  id,
-  title,
-  category,
-  excerpt,
-}) {
+function ReposResults() {
   return (
-    <article className="repo">
-        <p
-          htmlFor={id}
-          dangerouslySetInnerHTML={{ __html: DOMpurify.sanitize(excerpt) }}
-        />
-    </article>
+    <Card.Group itemsPerRow={3} stackable>
+      <Card>
+        <Image src="https://avatars.githubusercontent.com/u/69631?v=4" wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>react</Card.Header>
+          <Card.Meta>
+            facebook
+          </Card.Meta>
+          <Card.Description>
+            A declarative, efficient, and flexible JavaScript library for building user interfaces.
+          </Card.Description>
+        </Card.Content>
+      </Card>
+      <Card>
+        <Image src="https://avatars.githubusercontent.com/u/69631?v=4" wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>react</Card.Header>
+          <Card.Meta>
+            facebook
+          </Card.Meta>
+          <Card.Description>
+            A declarative, efficient, and flexible JavaScript library for building user interfaces.
+          </Card.Description>
+        </Card.Content>
+      </Card>
+      <Card>
+        <Image src="https://avatars.githubusercontent.com/u/69631?v=4" wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>react</Card.Header>
+          <Card.Meta>
+            facebook
+          </Card.Meta>
+          <Card.Description>
+            A declarative, efficient, and flexible JavaScript library for building user interfaces.
+          </Card.Description>
+        </Card.Content>
+      </Card>
+      <Card>
+        <Image src="https://avatars.githubusercontent.com/u/69631?v=4" wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>react</Card.Header>
+          <Card.Meta>
+            facebook
+          </Card.Meta>
+          <Card.Description>
+            A declarative, efficient, and flexible JavaScript library for building user interfaces.
+          </Card.Description>
+        </Card.Content>
+      </Card>
+      <Card>
+        <Image src="https://avatars.githubusercontent.com/u/69631?v=4" wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>react</Card.Header>
+          <Card.Meta>
+            facebook
+          </Card.Meta>
+          <Card.Description>
+            A declarative, efficient, and flexible JavaScript library for building user interfaces.
+          </Card.Description>
+        </Card.Content>
+      </Card>
+      <Card>
+        <Image src="https://avatars.githubusercontent.com/u/69631?v=4" wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>react</Card.Header>
+          <Card.Meta>
+            facebook
+          </Card.Meta>
+          <Card.Description>
+            A declarative, efficient, and flexible JavaScript library for building user interfaces.
+          </Card.Description>
+        </Card.Content>
+      </Card>
+      <Card>
+        <Image src="https://avatars.githubusercontent.com/u/69631?v=4" wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>react</Card.Header>
+          <Card.Meta>
+            facebook
+          </Card.Meta>
+          <Card.Description>
+            A declarative, efficient, and flexible JavaScript library for building user interfaces.
+          </Card.Description>
+        </Card.Content>
+      </Card>
+    </Card.Group>
   );
 }
+ReposResults.propTypes = {};
 
-Repos.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  excerpt: PropTypes.string.isRequired,
-};
+ReposResults.defaultProps = {};
 
-export default React.memo(Repos);
+export default React.memo(ReposResults);
